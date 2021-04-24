@@ -61,7 +61,7 @@ rec {
           # The type denotes the kind of dependency, which determines
           # what extensions we use to look for it.
           deps = import (pkgs.runCommand "latex-includes"
-            { rootFile = baseNameOf (toString rootFile); src = key; }
+            { rootFile = baseNameOf (toString rootFile); src = builtins.trace key key; }
             "${pkgs.perl}/bin/perl ${./find-includes.pl}");
 
           searchPath' = [(dirOf key)] ++ searchPath;
